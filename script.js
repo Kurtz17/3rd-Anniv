@@ -45,18 +45,21 @@ updateCountup();
 // ================================
 const cursor = document.querySelector('.custom-cursor');
 
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
+// Only enable custom cursor on devices with hover capability (not touch devices)
+if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
 
-document.addEventListener('mousedown', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-});
+    document.addEventListener('mousedown', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
+    });
 
-document.addEventListener('mouseup', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-});
+    document.addEventListener('mouseup', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+    });
+}
 
 // ================================
 // SCROLL PROGRESS BAR
@@ -98,9 +101,28 @@ window.addEventListener('scroll', () => {
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
-navToggle.addEventListener('click', () => {
+navToggle.addEventListener('click', (e) => {
+    e.stopPropagation();
     navToggle.classList.toggle('active');
     navMenu.classList.toggle('active');
+    
+    // Prevent body scroll when menu is open
+    if (navMenu.classList.contains('active')) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = '';
+    }
+});
+
+// Close menu when clicking outside
+document.addEventListener('click', (e) => {
+    if (navMenu.classList.contains('active') && 
+        !navMenu.contains(e.target) && 
+        !navToggle.contains(e.target)) {
+        navToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
 });
 
 // Close menu when clicking nav links
@@ -108,6 +130,7 @@ document.querySelectorAll('.nav-link').forEach(link => {
     link.addEventListener('click', () => {
         navToggle.classList.remove('active');
         navMenu.classList.remove('active');
+        document.body.style.overflow = '';
     });
 });
 
@@ -132,7 +155,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // ================================
 const polaroid = document.querySelector('[data-tilt]');
 
-if (polaroid) {
+if (polaroid && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
     polaroid.addEventListener('mousemove', (e) => {
         const rect = polaroid.getBoundingClientRect();
         const x = e.clientX - rect.left;
@@ -180,7 +203,6 @@ const galleryData = [
     { id: 13, caption: 'Makanan favvv nangor butkemmm', color: '#ffecd2', image: 'assets/p13.jpeg' },
     { id: 14, caption: 'Dusun bambu', color: '#fcb69f', image: 'assets/p14.jpeg' },
     { id: 15, caption: 'Duo fish', color: '#ff6e7f', image: 'assets/p15.jpeg' },
-    { id: 16, caption: 'Main atv walapun ayang takut atv', color: '#bfe9ff', image: 'assets/p16.jpeg' }
 ];
 
 function renderGallery(filter = 'All') {
@@ -227,6 +249,9 @@ const lightboxClose = document.getElementById('lightboxClose');
 const lightboxPrev = document.getElementById('lightboxPrev');
 const lightboxNext = document.getElementById('lightboxNext');
 
+let touchStartX = 0;
+let touchEndX = 0;
+
 function openLightbox(index) {
     currentImageIndex = index;
     updateLightboxContent();
@@ -259,6 +284,26 @@ function prevImage() {
 lightboxClose.addEventListener('click', closeLightbox);
 lightboxNext.addEventListener('click', nextImage);
 lightboxPrev.addEventListener('click', prevImage);
+
+// Touch swipe support for mobile
+lightbox.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, false);
+
+lightbox.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, false);
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    if (touchEndX < touchStartX - swipeThreshold) {
+        nextImage();
+    }
+    if (touchEndX > touchStartX + swipeThreshold) {
+        prevImage();
+    }
+}
 
 // Keyboard navigation
 document.addEventListener('keydown', (e) => {
@@ -432,58 +477,63 @@ function showConfetti() {
 // ================================
 const draggablePolaroids = document.querySelectorAll('.draggable-polaroid');
 
-draggablePolaroids.forEach(polaroid => {
-    let isDragging = false;
-    let currentX;
-    let currentY;
-    let initialX;
-    let initialY;
-    
-    polaroid.addEventListener('mousedown', dragStart);
-    polaroid.addEventListener('touchstart', dragStart);
-    
-    document.addEventListener('mousemove', drag);
-    document.addEventListener('touchmove', drag);
-    
-    document.addEventListener('mouseup', dragEnd);
-    document.addEventListener('touchend', dragEnd);
-    
-    function dragStart(e) {
-        if (e.type === 'touchstart') {
-            initialX = e.touches[0].clientX - polaroid.offsetLeft;
-            initialY = e.touches[0].clientY - polaroid.offsetTop;
-        } else {
-            initialX = e.clientX - polaroid.offsetLeft;
-            initialY = e.clientY - polaroid.offsetTop;
-        }
+// Only enable dragging on non-mobile devices
+const isMobile = window.matchMedia('(max-width: 768px)').matches;
+
+if (!isMobile) {
+    draggablePolaroids.forEach(polaroid => {
+        let isDragging = false;
+        let currentX;
+        let currentY;
+        let initialX;
+        let initialY;
         
-        if (e.target === polaroid || polaroid.contains(e.target)) {
-            isDragging = true;
-            polaroid.style.zIndex = 1000;
-        }
-    }
-    
-    function drag(e) {
-        if (isDragging) {
-            e.preventDefault();
-            
-            if (e.type === 'touchmove') {
-                currentX = e.touches[0].clientX - initialX;
-                currentY = e.touches[0].clientY - initialY;
+        polaroid.addEventListener('mousedown', dragStart);
+        polaroid.addEventListener('touchstart', dragStart);
+        
+        document.addEventListener('mousemove', drag);
+        document.addEventListener('touchmove', drag);
+        
+        document.addEventListener('mouseup', dragEnd);
+        document.addEventListener('touchend', dragEnd);
+        
+        function dragStart(e) {
+            if (e.type === 'touchstart') {
+                initialX = e.touches[0].clientX - polaroid.offsetLeft;
+                initialY = e.touches[0].clientY - polaroid.offsetTop;
             } else {
-                currentX = e.clientX - initialX;
-                currentY = e.clientY - initialY;
+                initialX = e.clientX - polaroid.offsetLeft;
+                initialY = e.clientY - polaroid.offsetTop;
             }
             
-            polaroid.style.left = currentX + 'px';
-            polaroid.style.top = currentY + 'px';
+            if (e.target === polaroid || polaroid.contains(e.target)) {
+                isDragging = true;
+                polaroid.style.zIndex = 1000;
+            }
         }
-    }
-    
-    function dragEnd() {
-        isDragging = false;
-    }
-});
+        
+        function drag(e) {
+            if (isDragging) {
+                e.preventDefault();
+                
+                if (e.type === 'touchmove') {
+                    currentX = e.touches[0].clientX - initialX;
+                    currentY = e.touches[0].clientY - initialY;
+                } else {
+                    currentX = e.clientX - initialX;
+                    currentY = e.clientY - initialY;
+                }
+                
+                polaroid.style.left = currentX + 'px';
+                polaroid.style.top = currentY + 'px';
+            }
+        }
+        
+        function dragEnd() {
+            isDragging = false;
+        }
+    });
+}
 
 // ================================
 // SCROLL ANIMATIONS (AOS Alternative)
