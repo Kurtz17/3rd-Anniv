@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>3 Years of Us ✨</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Caveat:wght@400;700&family=Poppins:wght@300;400;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="custom-cursor"></div>
+    
+    <!-- Loading Screen -->
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loading-heart">
+            <svg viewBox="0 0 32 32" width="100" height="100">
+                <path d="M16,28.261c0,0-14-7.926-14-17.046c0-9.356,13-9.356,14-0.356c1-9,14-9,14,0.356C30,20.335,16,28.261,16,28.261z" fill="#9b59b6"/>
+            </svg>
+        </div>
+        <p class="loading-text">Loading Our Story...</p>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">3 Years ♥</div>
+            <div class="nav-toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#hero" class="nav-link">Home</a></li>
+                <li><a href="#timeline" class="nav-link">Timeline</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#memories" class="nav-link">Memories</a></li>
+                <li><a href="#letter" class="nav-link">Letter</a></li>
+                <li><a href="#quiz" class="nav-link">Quiz</a></li>
+                <li><a href="#dreams" class="nav-link">Dreams</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="hero">
+        <div class="particles"></div>
+        <div class="floating-hearts">
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+            <div class="heart"></div>
+        </div>
+        
+        <div class="hero-content">
+            <h1 class="hero-title glitter-text">3 Years of Us</h1>
+            
+            <!-- Countdown Timer -->
+            <div class="countdown">
+                <div class="countdown-item">
+                    <span class="countdown-value" id="days">0</span>
+                    <span class="countdown-label">Days</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="hours">0</span>
+                    <span class="countdown-label">Hours</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="minutes">0</span>
+                    <span class="countdown-label">Minutes</span>
+                </div>
+                <div class="countdown-item">
+                    <span class="countdown-value" id="seconds">0</span>
+                    <span class="countdown-label">Seconds</span>
+                </div>
+            </div>
+
+            <!-- Polaroid Photo -->
+            <div class="polaroid-frame" data-tilt>
+                <!-- Replace with your couple photo -->
+                <div class="polaroid-photo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 24px;">
+                    Your Photo Here
+                </div>
+                <div class="polaroid-caption">Forever & Always ♥</div>
+            </div>
+
+            <button class="cta-button pulse" onclick="document.getElementById('timeline').scrollIntoView({behavior: 'smooth'})">
+                <span>Enter Our Story</span>
+                <svg class="button-arrow" width="20" height="20" viewBox="0 0 20 20">
+                    <path d="M10 15l-5-5h10l-5 5z" fill="currentColor"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Doodle SVGs -->
+        <svg class="doodle doodle-1" viewBox="0 0 100 100" width="80">
+            <path d="M50,20 Q30,40 50,60 Q70,40 50,20" fill="none" stroke="#fff" stroke-width="2"/>
+        </svg>
+        <svg class="doodle doodle-2" viewBox="0 0 100 100" width="60">
+            <circle cx="50" cy="50" r="20" fill="none" stroke="#fff" stroke-width="2"/>
+            <path d="M50,30 L60,50 L50,70 L40,50 Z" fill="#fff" opacity="0.5"/>
+        </svg>
+    </section>
+
+    <!-- TIMELINE SECTION -->
+    <section class="timeline-section" id="timeline">
+        <h2 class="section-title">Our Journey Together</h2>
+        <div class="timeline-container">
+            <div class="timeline-track" id="timelineTrack">
+                <!-- Timeline Item 1 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <img src="assets/o1.jpeg" alt="First Meeting" style="width: 100%; height: 200px; object-fit: cover;">
+                    </div>
+                    <div class="timeline-date">Nov 29, 2022</div>
+                    <h3 class="timeline-title">First Meeting</h3>
+                    <p class="timeline-caption">The day our story began...</p>
+                    <div class="timeline-details">Remember the butterflies? That nervous smile? Everything felt perfect.</div>
+                    <div class="sticker sticker-heart">♥</div>
+                </div>
+
+                <!-- Timeline Item 2 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape washi-2"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white;">Photo 2</div>
+                    </div>
+                    <div class="timeline-date">Dec 25, 2022</div>
+                    <h3 class="timeline-title">First Christmas</h3>
+                    <p class="timeline-caption">Our first holiday together</p>
+                    <div class="timeline-details">The best gift was you ❄️</div>
+                    <div class="sticker sticker-star">★</div>
+                </div>
+
+                <!-- Timeline Item 3 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape washi-3"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white;">Photo 3</div>
+                    </div>
+                    <div class="timeline-date">Feb 14, 2023</div>
+                    <h3 class="timeline-title">Valentine's Day</h3>
+                    <p class="timeline-caption">First of many celebrations</p>
+                    <div class="timeline-details">Love was in the air 💕</div>
+                    <div class="sticker sticker-heart">♥</div>
+                </div>
+
+                <!-- Timeline Item 4 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center; color: white;">Photo 4</div>
+                    </div>
+                    <div class="timeline-date">Jun 15, 2023</div>
+                    <h3 class="timeline-title">Beach Adventure</h3>
+                    <p class="timeline-caption">Sunset by the ocean</p>
+                    <div class="timeline-details">Sand, sun, and smiles 🌊</div>
+                    <div class="sticker sticker-star">★</div>
+                </div>
+
+                <!-- Timeline Item 5 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape washi-2"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); display: flex; align-items: center; justify-content: center; color: #333;">Photo 5</div>
+                    </div>
+                    <div class="timeline-date">Sep 10, 2023</div>
+                    <h3 class="timeline-title">Anniversary #1</h3>
+                    <p class="timeline-caption">One year of magic</p>
+                    <div class="timeline-details">Just the beginning ✨</div>
+                    <div class="sticker sticker-heart">♥</div>
+                </div>
+
+                <!-- Timeline Item 6 -->
+                <div class="timeline-card" data-aos="fade-up">
+                    <div class="washi-tape washi-3"></div>
+                    <div class="timeline-photo polaroid-style">
+                        <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%); display: flex; align-items: center; justify-content: center; color: #333;">Photo 6</div>
+                    </div>
+                    <div class="timeline-date">Nov 29, 2024</div>
+                    <h3 class="timeline-title">Two Years!</h3>
+                    <p class="timeline-caption">Still going strong</p>
+                    <div class="timeline-details">Forever to go 💖</div>
+                    <div class="sticker sticker-star">★</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PHOTO GALLERY -->
+    <section class="gallery-section" id="gallery">
+        <h2 class="section-title">Our Photo Album</h2>
+        
+        <!-- Filter Buttons -->
+        <div class="filter-buttons">
+            <button class="filter-btn active" data-filter="All">All</button>
+            <button class="filter-btn" data-filter="Dates">Dates</button>
+            <button class="filter-btn" data-filter="Adventures">Adventures</button>
+            <button class="filter-btn" data-filter="Random">Random</button>
+            <button class="filter-btn" data-filter="Special Days">Special Days</button>
+        </div>
+
+        <!-- Gallery Grid -->
+        <div class="gallery-grid" id="galleryGrid">
+            <!-- Gallery items will be generated by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Lightbox Modal -->
+    <div class="lightbox" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <button class="lightbox-prev" id="lightboxPrev">‹</button>
+        <button class="lightbox-next" id="lightboxNext">›</button>
+        <div class="lightbox-content">
+            <img src="" alt="" id="lightboxImg">
+            <p class="lightbox-caption" id="lightboxCaption"></p>
+        </div>
+    </div>
+
+    <!-- MEMORY WALL -->
+    <section class="memory-wall" id="memories">
+        <h2 class="section-title">Our Memory Wall</h2>
+        <div class="sticky-notes-grid">
+            <!-- Sticky Note 1 -->
+            <div class="sticky-note" style="--rotation: 2deg; --bg: #e1bee7">
+                <div class="sticky-front">
+                    <h3>Inside Joke #1</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>Remember when we couldn't stop laughing at that random thing? 😂</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 2 -->
+            <div class="sticky-note" style="--rotation: -3deg; --bg: #ce93d8">
+                <div class="sticky-front">
+                    <h3>Our Song</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>Every time it plays, I think of you 🎵</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 3 -->
+            <div class="sticky-note" style="--rotation: 1deg; --bg: #ba68c8">
+                <div class="sticky-front">
+                    <h3>Favorite Memory</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>That spontaneous adventure we took together 🚗</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 4 -->
+            <div class="sticky-note" style="--rotation: -2deg; --bg: #f3e5f5">
+                <div class="sticky-front">
+                    <h3>Sweet Moment</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>When you surprised me with my favorite coffee ☕</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 5 -->
+            <div class="sticky-note" style="--rotation: 3deg; --bg: #e1bee7">
+                <div class="sticky-front">
+                    <h3>First Kiss</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>My heart still races thinking about it 💋</p>
+                </div>
+            </div>
+
+            <!-- Sticky Note 6 -->
+            <div class="sticky-note" style="--rotation: -1deg; --bg: #ce93d8">
+                <div class="sticky-front">
+                    <h3>Rainy Day</h3>
+                    <p>Click to reveal...</p>
+                </div>
+                <div class="sticky-back">
+                    <p>Dancing in the rain together 🌧️</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LOVE LETTER -->
+    <section class="letter-section" id="letter">
+        <h2 class="section-title">A Letter to You</h2>
+        <div class="envelope-container" id="envelopeContainer">
+            <div class="envelope">
+                <div class="envelope-flap"></div>
+                <div class="envelope-body"></div>
+            </div>
+            <div class="letter-paper" id="letterPaper">
+                <div class="letter-content">
+                    <p class="letter-date">November 29, 2025</p>
+                    <p class="letter-text typewriter">
+                        My Dearest Love,<br><br>
+                        Three years ago, our story began, and every moment since has been a beautiful chapter in the book of us. You've filled my days with laughter, my heart with warmth, and my life with meaning.<br><br>
+                        From our first awkward hello to the comfortable silences we now share, every second with you has been a gift. You've been my partner in adventure, my comfort in storms, and my greatest blessing.<br><br>
+                        Thank you for three incredible years of love, growth, and countless memories. Here's to many more adventures, inside jokes, and moments that take my breath away.<br><br>
+                        Forever yours,<br>
+                        <span class="signature">Your Love</span>
+                    </p>
+                    
+                    <!-- Music Player -->
+                    <div class="music-player">
+                        <button class="music-btn" id="musicBtn">
+                            <span id="musicIcon">▶</span>
+                            <span id="musicText">Play Our Song</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- INTERACTIVE QUIZ -->
+    <section class="quiz-section" id="quiz">
+        <h2 class="section-title">How Well Do You Know Us?</h2>
+        <div class="quiz-container">
+            <div class="quiz-score">Score: <span id="quizScore">0</span>/3</div>
+            
+            <!-- Question 1 -->
+            <div class="quiz-question">
+                <h3>1. What was our first date?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-question="1" data-answer="false">Dinner</button>
+                    <button class="quiz-option" data-question="1" data-answer="false">Movies</button>
+                    <button class="quiz-option" data-question="1" data-answer="true">Coffee Shop</button>
+                    <button class="quiz-option" data-question="1" data-answer="false">Park Walk</button>
+                </div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="quiz-question">
+                <h3>2. What's our favorite couple activity?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-question="2" data-answer="true">Cooking Together</button>
+                    <button class="quiz-option" data-question="2" data-answer="false">Gaming</button>
+                    <button class="quiz-option" data-question="2" data-answer="false">Hiking</button>
+                    <button class="quiz-option" data-question="2" data-answer="false">Netflix Binge</button>
+                </div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="quiz-question">
+                <h3>3. Where did we have our most memorable date?</h3>
+                <div class="quiz-options">
+                    <button class="quiz-option" data-question="3" data-answer="false">Restaurant</button>
+                    <button class="quiz-option" data-question="3" data-answer="true">Beach Sunset</button>
+                    <button class="quiz-option" data-question="3" data-answer="false">Museum</button>
+                    <button class="quiz-option" data-question="3" data-answer="false">Concert</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Confetti Container -->
+        <div class="confetti-container" id="confettiContainer"></div>
+    </section>
+
+    <!-- BUCKET LIST / DREAMS -->
+    <section class="dreams-section" id="dreams">
+        <h2 class="section-title">Our Future Dreams</h2>
+        
+        <!-- Bucket List -->
+        <div class="bucket-list">
+            <div class="bucket-item">
+                <input type="checkbox" id="dream1">
+                <label for="dream1">Visit Paris together 🗼</label>
+            </div>
+            <div class="bucket-item">
+                <input type="checkbox" id="dream2">
+                <label for="dream2">Learn to cook pasta from scratch 🍝</label>
+            </div>
+            <div class="bucket-item">
+                <input type="checkbox" id="dream3">
+                <label for="dream3">Go stargazing in the desert ⭐</label>
+            </div>
+            <div class="bucket-item">
+                <input type="checkbox" id="dream4">
+                <label for="dream4">Road trip across the country 🚗</label>
+            </div>
+            <div class="bucket-item">
+                <input type="checkbox" id="dream5">
+                <label for="dream5">Learn a dance together 💃</label>
+            </div>
+            <div class="bucket-item">
+                <input type="checkbox" id="dream6">
+                <label for="dream6">Build our dream home 🏡</label>
+            </div>
+        </div>
+
+        <!-- Vision Board -->
+        <div class="vision-board">
+            <div class="vision-card" data-aos="flip-left">
+                <div class="vision-image">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">🗼</div>
+                </div>
+                <h3>Paris</h3>
+                <p>Walk the streets of love</p>
+            </div>
+            <div class="vision-card" data-aos="flip-left" data-aos-delay="100">
+                <div class="vision-image">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">🏖️</div>
+                </div>
+                <h3>Maldives</h3>
+                <p>Paradise awaits</p>
+            </div>
+            <div class="vision-card" data-aos="flip-left" data-aos-delay="200">
+                <div class="vision-image">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">🗻</div>
+                </div>
+                <h3>Japan</h3>
+                <p>Cherry blossoms & culture</p>
+            </div>
+            <div class="vision-card" data-aos="flip-left" data-aos-delay="300">
+                <div class="vision-image">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px;">🏔️</div>
+                </div>
+                <h3>Switzerland</h3>
+                <p>Mountain adventures</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- POLAROID WALL -->
+    <section class="polaroid-wall-section" id="polaroidWall">
+        <h2 class="section-title">Scattered Memories</h2>
+        <div class="polaroid-wall">
+            <div class="draggable-polaroid" style="--x: 10%; --y: 15%; --rotate: 5deg;">
+                <div class="polaroid-inner">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);"></div>
+                    <p>Memory 1</p>
+                </div>
+                <div class="washi-corner"></div>
+            </div>
+            <div class="draggable-polaroid" style="--x: 65%; --y: 20%; --rotate: -8deg;">
+                <div class="polaroid-inner">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);"></div>
+                    <p>Memory 2</p>
+                </div>
+                <div class="washi-corner"></div>
+            </div>
+            <div class="draggable-polaroid" style="--x: 35%; --y: 55%; --rotate: 3deg;">
+                <div class="polaroid-inner">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);"></div>
+                    <p>Memory 3</p>
+                </div>
+                <div class="washi-corner"></div>
+            </div>
+            <div class="draggable-polaroid" style="--x: 15%; --y: 65%; --rotate: -5deg;">
+                <div class="polaroid-inner">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #30cfd0 0%, #330867 100%);"></div>
+                    <p>Memory 4</p>
+                </div>
+                <div class="washi-corner"></div>
+            </div>
+            <div class="draggable-polaroid" style="--x: 70%; --y: 60%; --rotate: 7deg;">
+                <div class="polaroid-inner">
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);"></div>
+                    <p>Memory 5</p>
+                </div>
+                <div class="washi-corner"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FINAL MESSAGE -->
+    <section class="final-section" id="final">
+        <div class="final-content">
+            <h2 class="final-title">I Love You</h2>
+            <div class="particle-burst"></div>
+            <p class="final-message">
+                Today, tomorrow, and forever.<br>
+                Here's to many more years of love, laughter, and adventures together.
+            </p>
+            <p class="final-date">November 29, 2025</p>
+            <div class="final-hearts">
+                <span class="final-heart">♥</span>
+                <span class="final-heart">♥</span>
+                <span class="final-heart">♥</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Made with ♥ for our 3rd Anniversary</p>
+        <p class="footer-small">Forever & Always</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
